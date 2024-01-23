@@ -1,15 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/global.module.scss";
+import "./layout/layout.module.scss";
 import Home from "./pages/home";
 import reportWebVitals from "./reportWebVitals";
+import Layout from "./layout";
+import { WeatherProvider } from "./data/weather/weather.context";
+import { GeoCityProvider } from "./data/geoCity/geo.context";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Home />
+    <GeoCityProvider>
+      <WeatherProvider>
+        <Layout>
+          <Home />
+        </Layout>
+      </WeatherProvider>
+    </GeoCityProvider>
   </React.StrictMode>
 );
 
