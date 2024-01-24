@@ -25,6 +25,7 @@ function CitySearchInput({
   return (
     <Autocomplete
       id="city-search"
+      fullWidth
       options={query.data || []}
       getOptionLabel={(option: GeoCity) => option.name}
       filterOptions={(x) => x}

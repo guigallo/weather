@@ -1,7 +1,9 @@
+import { useEffect } from "react";
+import classNames from "classnames";
 import CitySearchInput from "../../components/citySearchInput";
 import useWeather from "../../data/weather/useWeather";
 import useGeoCity from "../../data/geoCity/useGeoCity";
-import { useEffect } from "react";
+import style from "./home.module.scss";
 
 function Home() {
   const city = useGeoCity();
@@ -12,24 +14,61 @@ function Home() {
     weather.setQuery(city.selected);
   }, [city.selected, weather]);
 
+  useEffect(() => {
+    console.log("[city]", city);
+  }, [city]);
+
+  useEffect(() => {
+    console.log("[weather]", weather);
+  }, [weather]);
+
   return (
-    <div className="Home">
-      <h1>hello weather</h1>
+    <main className={style["home"]}>
+      <div
+        className={classNames(style["home__search"], style["glassmorphism"])}
+      >
+        <CitySearchInput onSelectCity={city.setSelected} />
+      </div>
 
-      <CitySearchInput onSelectCity={city.setSelected} />
+      <div className={style["home__info"]}>
+        <div className={style["card"]}>{weather.data?.currentTemp}</div>
+        <div className={style["card"]}>{weather.data?.humidity}</div>
+        <div className={style["card"]}>{weather.data?.windSpeed}</div>
+      </div>
 
-      <h3>city</h3>
-      {city.loading ? <p>loading...</p> : null}
-      {city.error ? <p>{city.error}</p> : null}
-      {city.selected ? (
-        <pre>{JSON.stringify(city.selected, null, 2)}</pre>
-      ) : null}
-
-      <h3>weather</h3>
-      {weather.loading ? <p>loading...</p> : null}
-      {weather.error ? <p>{weather.error}</p> : null}
-      {weather.data ? <pre>{JSON.stringify(weather.data, null, 2)}</pre> : null}
-    </div>
+      <div
+        className={classNames(style["home__weather"], style["glassmorphism"])}
+      >
+        <div className={style["home__weather__section"]}>
+          <h5>Today</h5>
+          <div className={style["home__weather__section__content"]}>teste</div>
+        </div>
+        <div className={style["home__weather__section"]}>
+          <h5>+1</h5>
+          <div className={style["home__weather__section__content"]}>teste</div>
+        </div>
+        <div className={style["home__weather__section"]}>
+          <h5>+2</h5>
+          <div className={style["home__weather__section__content"]}>teste</div>
+        </div>
+        <div className={style["home__weather__section"]}>
+          <h5>+3</h5>
+          <div className={style["home__weather__section__content"]}>teste</div>
+        </div>
+        <div className={style["home__weather__section"]}>
+          <h5>+4</h5>
+          <div className={style["home__weather__section__content"]}>teste</div>
+        </div>
+        <div className={style["home__weather__section"]}>
+          <h5>+5</h5>
+          <div className={style["home__weather__section__content"]}>teste</div>
+        </div>
+        <div className={style["home__weather__section"]}>
+          <h5>+6</h5>
+          <div className={style["home__weather__section__content"]}>teste</div>
+        </div>
+      </div>
+    </main>
   );
 }
 

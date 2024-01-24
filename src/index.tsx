@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./layout/layout.module.scss";
 import Home from "./pages/home";
 import reportWebVitals from "./reportWebVitals";
-import Layout from "./layout";
+import Theme from "./theme/layout";
+import "normalize.css/normalize.css";
 import { WeatherProvider } from "./data/weather/weather.context";
 import { GeoCityProvider } from "./data/geoCity/geo.context";
 
@@ -12,11 +12,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    {/* TODO: make provider to import all contexts */}
     <GeoCityProvider>
+      {/* TODO: make provider to import all contexts */}
       <WeatherProvider>
-        <Layout>
+        <Theme>
           <Home />
-        </Layout>
+        </Theme>
       </WeatherProvider>
     </GeoCityProvider>
   </React.StrictMode>
