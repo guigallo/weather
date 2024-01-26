@@ -21,6 +21,8 @@ export function owToWeatherConverter(data: any): Weather | undefined {
     weather: data.weather[0],
     main: data.main,
     wind: data.wind,
+    name: data.name,
+    sys: data.sys,
   };
 }
 

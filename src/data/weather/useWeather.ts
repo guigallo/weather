@@ -10,7 +10,7 @@ import config from "../../config";
 
 export default function useWeather(): WeatherContextType {
   const context = useContext(WeatherContext);
-  const { dispatch, query } = context;
+  const { unit, dispatch, query } = context;
   const { lat, lon } = query;
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function useWeather(): WeatherContextType {
             lat,
             lon,
             appid: config.openWeather.apiKey,
-            units: "metric",
+            units: unit,
           },
           converter: {
             onSuccess: owToWeatherConverter,
@@ -38,7 +38,7 @@ export default function useWeather(): WeatherContextType {
       }
     };
     getWeather();
-  }, [lat, lon, dispatch]);
+  }, [unit, lat, lon, dispatch]);
 
   return context;
 }

@@ -93,10 +93,13 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-height: 40vh;
-  height: 100%;
   border-radius: 12px;
-  padding: 20px;
+  padding: 60px 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .glassmorphism {

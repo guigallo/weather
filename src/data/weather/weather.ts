@@ -15,4 +15,10 @@ export type Weather = {
     speed: number;
     deg: number;
   };
+  name: string;
+  sys: {
+    country: string;
+    sunrise: number;
+    sunset: number;
+  };
 };
