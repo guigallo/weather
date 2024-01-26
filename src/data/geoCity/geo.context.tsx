@@ -1,4 +1,10 @@
-import { Dispatch, useState, createContext, useReducer } from "react";
+import {
+  Dispatch,
+  useState,
+  createContext,
+  useReducer,
+  useEffect,
+} from "react";
 import { GeoCity } from "./geoCity";
 import {
   ResponseState,
@@ -6,6 +12,7 @@ import {
   responseReducer,
   initialResponseState,
 } from "../../shared/requests";
+import { track } from "@vercel/analytics/react";
 
 export interface GeoCityContextType extends ResponseState<GeoCity[]> {
   dispatch: Dispatch<ResponseAction<GeoCity[]>>;
@@ -39,6 +46,13 @@ function GeoCityProvider({ children }: { children: React.ReactNode }) {
   );
   const [query, setQuery] = useState<string>("");
   const [selected, setSelected] = useState<GeoCity | undefined>(undefined);
+
+  useEffect(() => {
+    track("geoCity", {
+      action: "search",
+      query,
+    });
+  }, [query]);
 
   return (
     <GeoCityContext.Provider
