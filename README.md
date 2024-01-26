@@ -10,8 +10,8 @@ In the project directory, you can run:
 
 ### Dockerfile
 
-docker build -t guigallo/weather .\
-docker run --env-file .env.local -p 8080:80 guigallo/weather
+`docker build -t guigallo/weather .`\
+`docker run --env-file .env.local -p 8080:80 guigallo/weather`
 
 ### `npm start`
 
