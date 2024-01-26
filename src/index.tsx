@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Analytics } from "@vercel/analytics/react";
 import Home from "./pages/home";
 import reportWebVitals from "./reportWebVitals";
 import Theme from "./styles/layout";
+
 import "normalize.css/normalize.css";
 import { WeatherProvider } from "./data/weather/weather.context";
 import { GeoCityProvider } from "./data/geoCity/geo.context";
@@ -18,6 +20,7 @@ root.render(
       <WeatherProvider>
         <Theme>
           <Home />
+          <Analytics />
         </Theme>
       </WeatherProvider>
     </GeoCityProvider>
