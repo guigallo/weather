@@ -18,10 +18,9 @@ export function owToGeoConverter(data: any): Array<GeoCity> {
 export function owToWeatherConverter(data: any): Weather | undefined {
   if (!data) return undefined;
   return {
-    currentTemp: data.main.temp,
-    weatherDescription: data.weather[0].description,
-    humidity: data.main.humidity,
-    windSpeed: data.wind.speed,
+    weather: data.weather[0],
+    main: data.main,
+    wind: data.wind,
   };
 }
 
@@ -31,4 +30,30 @@ export function owToWeatherErrorConverter(
   if (!errorMessage) return undefined;
   if (errorMessage === "Bad Request") return "Invalid location";
   return errorMessage;
+}
+
+export function weatherIdToImgName(id?: number, defaultName = "clear_sky") {
+  function getImageName() {
+    if (!id) return defaultName;
+    const idCode = id.toString().charAt(0);
+    switch (idCode) {
+      case "2":
+        return "thunderstorm"; // ok
+      case "3":
+        return "scattered_clouds"; // was drizzle
+      case "5":
+        return "rain"; // ok
+      case "6":
+        return "snow"; // ok
+      case "7":
+        return "mist"; // was atmosphere
+      case "8":
+        return id === 800 ? defaultName : "few_clouds";
+      default:
+        return defaultName;
+    }
+  }
+  const imageName = getImageName();
+
+  return `webp/${imageName}.webp`;
 }

@@ -1,6 +1,18 @@
 export type Weather = {
-  currentTemp: number;
-  weatherDescription: string;
-  humidity: number;
-  windSpeed: number;
+  main: {
+    temp: number;
+    pressure: number;
+    humidity: number;
+    temp_min: number;
+    temp_max: number;
+  };
+  weather: {
+    id: number;
+    main: string;
+    description: string;
+  };
+  wind: {
+    speed: number;
+    deg: number;
+  };
 };

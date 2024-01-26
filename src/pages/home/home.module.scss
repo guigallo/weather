@@ -1,11 +1,12 @@
+@use "../../styles/mixins/glassmorphism";
+
 .home {
-  background-image: url('~/public/img/overcast_clouds.png');
+  transition: all;
+  transition-duration: 1000ms;
   background-repeat: no-repeat;
   background-size: cover;
-
   color: white;
-  font-family: 'Roboto', sans-serif;
-
+  font-family: "Roboto", sans-serif;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
@@ -13,13 +14,24 @@
   flex-direction: column;
 
   &__search {
+    transition: all;
+    transition-duration: 1000ms;
+    position: absolute;
+    width: 100vw;
     display: flex;
-    justify-content: space-around;
-    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
 
-    > div {
-      width: 40vw;
-      max-width: 900px;
+    &-full {
+      height: 100vh;
+      background-color: rgba(17, 25, 40, 1);
+      padding: 0 5vw;
+    }
+
+    &-bar {
+      height: 8vh;
+      padding: 0 20vw;
     }
   }
 
@@ -36,38 +48,57 @@
     }
   }
 
-  &__weather {
+  &__forecast {
+    transition: all;
+    transition-duration: 1000ms;
     display: flex;
     height: 25vh;
+    padding: 0 30px;
+    text-align: center;
 
-    > div:nth-last-child(1) {
-      border: unset
+    &-hide {
+      height: 0px;
+    }
+
+    &__togglebtn {
+      position: relative;
+      left: 2rem;
+      top: calc(-0.5rem + 1px);
+      padding: 10px 1.5rem;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      cursor: pointer;
+    }
+
+    > div:nth-last-child(1) > div {
+      border: unset;
     }
 
     &__section {
       display: flex;
       flex-direction: column;
       flex: 1;
-      border-right: white solid 1px;
 
-      // &__content { }
+      &__content {
+        border-right: 1px solid rgba(80, 87, 128, 0.5);
+        margin-bottom: 20px;
+        height: 100%;
+      }
     }
   }
 }
 
 .card {
-  background-color: rgba(17, 25, 40, 0.75);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
   margin: 30px 20px;
   display: flex;
   flex: 1;
+  flex-direction: column;
   max-height: 40vh;
   height: 100%;
+  border-radius: 12px;
+  padding: 20px;
 }
 
 .glassmorphism {
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  background-color: rgba(17, 25, 40, 0.75);
+  @include glassmorphism.glassmorphism;
 }

@@ -1,6 +1,6 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import * as React from "react";
-import theme from ".";
+import theme from "./theme";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (

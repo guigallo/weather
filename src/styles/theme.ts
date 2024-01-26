@@ -8,6 +8,7 @@ const theme = createTheme({
     // },
     // secondary: {
     //   main: "#ff98a9",
+    // #505780
     // },
     // background: {
     //   default: "#2b2847",
