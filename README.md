@@ -4,16 +4,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-Configure `.env.local` based on `.env.example`
+Before run project you should configure your OpenWeather api key in `.env.local` based on `.env.example`
 
-In the project directory, you can run:
+You have two options to run project: with docker or locally:
 
-### Dockerfile
+### 1. With Docker
 
 `docker build -t guigallo/weather .`\
 `docker run --env-file .env.local -p 8080:80 guigallo/weather`
 
-### `npm start`
+### 2. Locally
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
