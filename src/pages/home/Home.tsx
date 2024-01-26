@@ -18,14 +18,6 @@ function Home() {
     weather.setQuery(city.selected);
   }, [city.selected, weather]);
 
-  useEffect(() => {
-    console.log("[city]", city);
-  }, [city]);
-
-  useEffect(() => {
-    console.log("[weather]", weather);
-  }, [weather]);
-
   return (
     <main
       className={style["home"]}
@@ -34,11 +26,12 @@ function Home() {
       }}
     >
       <div
-        className={classNames(
-          style["home__search"],
-          weather.data ? style["home__search-bar"] : style["home__search-full"],
-          { [style["glassmorphism"]]: weather.data }
-        )}
+        className={classNames({
+          [style["home__search"]]: true,
+          [style["home__search-bar"]]: weather.data,
+          [style["home__search-full"]]: !weather.data,
+          [style["glassmorphism"]]: weather.data,
+        })}
       >
         <CitySearchInput onSelectCity={city.setSelected} />
       </div>
